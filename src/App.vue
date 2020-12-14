@@ -3,15 +3,10 @@
     <div class="header">
       <h1>Maney</h1>
 
-      <nav>
-        <button v-on:click="getBalance" v-if="is_auth">Saldo</button>
-        <button v-if="is_auth">Transacción</button>
-        <button v-if="is_auth">Cerrar Sesión</button>
-      </nav>
     </div>
 
     <div class="main-component">
-      <img src="/src/facebook_cover_photo_1.png" alt="logo" />
+      <img src="./src/facebook_cover_photo_1.png" alt="logo" />
     </div>
 
     <body>
