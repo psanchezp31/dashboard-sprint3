@@ -46,6 +46,7 @@
 
         </tbody>
       </table>
+      <NewRecordForm />   <!-- DAVID -->
     </body>
 
     <div class="botones">
@@ -63,9 +64,11 @@
 </template>
 
 <script>
+import NewRecordForm from './components/NewRecordForm'; // DAVID
+
 export default {
   name: 'App',
-  components:{},
+  components:{NewRecordForm},
   
   data:function() {
     return {
@@ -176,9 +179,12 @@ margin: 0 0 0 0;
     margin: 0;
     padding: 0;
     width: 100%;
-    height: 50px;
+    height: 50px; 
     background-color: #24527A;
     color: #5DACBD;
+    position: fixed;      /* DAVID */
+    left: 0;              /* DAVID */
+    bottom: 0;            /* DAVID */
   }
   .footer h5 {
     width: 100%;
