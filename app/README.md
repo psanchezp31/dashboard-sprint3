@@ -1,6 +1,6 @@
-# maney_app
+# app
 
-> una aplicación de finanzas personales
+> Desarrollo de la vista del dashboard
 
 ## Build Setup
 
