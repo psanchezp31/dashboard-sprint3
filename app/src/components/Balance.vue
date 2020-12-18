@@ -1,7 +1,7 @@
 <template>
   <div id="Balance">
     <div class="resumen">
-      <h3><center>Balance sadsdad</center></h3>
+      <h3><center>Balance</center></h3>
     </div>
     <table class="mt-3">
       <thead>

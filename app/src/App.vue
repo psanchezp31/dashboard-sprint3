@@ -8,7 +8,7 @@
 
     <body class="cuerpo">
       <div class="resumen">
-        <h3><center>Total Summary asdasdsda</center></h3>
+        <h3><center>Total Summary</center></h3>
       </div>
 
       <table class="tabla_balance">
