@@ -74,7 +74,7 @@ export default {
     processCreateRecord() {
       var self = this;
       axios
-        .post("http://127.0.0.1:8000/record", self.record_in, { headers: {} })
+        .post("https://maney-app-back.herokuapp.com/record", self.record_in, { headers: {} })
         .then((result) => {
           alert("Successful registration");
           self.$emit("log-in", self.record_in.id);

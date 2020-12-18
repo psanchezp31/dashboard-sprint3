@@ -40,7 +40,7 @@ export default {
   created: function () {
     let self = this;
     axios
-      .get("http://127.0.0.1:8000/records")
+      .get("https://maney-app-back.herokuapp.com/records/")
       .then((httpResponse) => {       
         for (var registro of httpResponse.data){
           self.transacciones.push(registro);
