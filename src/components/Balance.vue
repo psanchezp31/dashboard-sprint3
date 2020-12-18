@@ -1,7 +1,7 @@
 <template>
   <div id="Balance">
     <div class="resumen">
-      <h3><center>Balance</center></h3>
+      <h3><center>Balance sadsdad</center></h3>
     </div>
     <table class="mt-3">
       <thead>
@@ -19,8 +19,12 @@
       </thead>
 
       <tbody class="dates">
-        <tr v-for="res in transacciones">
-          <td v-for="item in res">{{ item }}</td>
+        <tr v-for="row in transacciones"  v-bind:key = "row">
+          <td>{{row.id}}</td>
+          <td>{{row.categoria}}</td>
+          <td>{{row.tipo}}</td>
+          <td>{{row.cantidad}}</td>
+          <td>{{row.fecha_registro}}</td>
         </tr>
       </tbody>
     </table>
@@ -40,7 +44,7 @@ export default {
   created: function () {
     let self = this;
     axios
-      .get("https://maney-app-back.herokuapp.com/records/")
+      .get("https://maney-app-back.herokuapp.com/records")
       .then((httpResponse) => {       
         for (var registro of httpResponse.data){
           self.transacciones.push(registro);

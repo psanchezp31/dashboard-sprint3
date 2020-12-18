@@ -9,10 +9,10 @@ const router = new vueRouter({
     routes: [{
             path: '/',
             name: "root",
-            component: App
+            component: Record
         },
         {
-            path: '/record',
+            path: '/newrecord',
             name: "Record",
             component: Record
         },

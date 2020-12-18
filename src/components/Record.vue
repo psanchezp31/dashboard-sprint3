@@ -76,44 +76,10 @@ export default {
       axios
         .post("https://maney-app-back.herokuapp.com/record", self.record_in, { headers: {} })
         .then((result) => {
+          console.log(result.data)
           alert("Successful registration");
-          self.$emit("log-in", self.record_in.id);
         });
-    },
-
-    addExpense(e) {
-      e.preventDefault();
-      const category = document.querySelector("#category").value;
-      const amount = document.querySelector("#amount").value;
-      const date = document.querySelector("#date").value;
-      if (category.trim() === "" || amount === "") {
-        return alert("You shoud fill the fields!");
-      }
-      this.dataTable.push({
-        date: date,
-        category: "- " + category,
-        amount: amount,
-      });
-    },
-
-    addIncome(e) {
-      e.preventDefault();
-      const category = document.querySelector("#category").value;
-      const amount = document.querySelector("#amount").value;
-      const date = document.querySelector("#date").value;
-      if (category.trim() === "" || amount === "") {
-        return alert("You shoud fill the fields!");
-      }
-      this.dataTable.push({
-        date: date,
-        category: "+ " + category,
-        amount: amount,
-      });
-    },
-    detail(e) {
-      e.preventDefault();
-      alert("ok!!");
-    },
+    }
   },
 };
 </script>

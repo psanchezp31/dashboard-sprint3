@@ -8,7 +8,7 @@
 
     <body class="cuerpo">
       <div class="resumen">
-        <h3><center>Total Summary</center></h3>
+        <h3><center>Total Summary asdasdsda</center></h3>
       </div>
 
       <table class="tabla_balance">
@@ -24,7 +24,7 @@
 
       <div class="main-component">
         <div class="links">
-          <router-link to="/">New Record</router-link>
+          <router-link to="/newrecord">New Record</router-link>
           <router-link to="/records">Balance</router-link>
         </div>
         <router-view></router-view>
@@ -41,35 +41,7 @@
 export default {
   name: "App",
   components: {},
-
-  data: function () {
-    return {
-      is_recorded: localStorage.getItem("isRecord") || false,
-    };
-  },
-  methods: {
-    updateAuth: function () {
-      var self = this;
-      self.is_recorded = localStorage.getItem("isRecord") || false;
-
-      if (self.is_recorded == false) self.$router.push({ name: "Record" });
-      else {
-        let id = localStorage.getItem("current_id");
-        self.$router.push({ categoria: "categoria", params: { id: id } });
-      }
-    },
-
-    logIn: function (id) {
-      localStorage.setItem("current_id", id);
-      localStorage.setItem("isRecord", true);
-      this.updateAuth();
-    },
-  },
-
-  created: function () {
-    this.$router.push({ name: "root" });
-    this.updateAuth();
-  },
+  methods: {}
 };
 </script>
 
