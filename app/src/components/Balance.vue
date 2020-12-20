@@ -6,7 +6,7 @@
     <table class="mt-3">
       <thead>
         <tr class="tr-gray">
-          <th scope="col" class="col">Id</th>
+          
           <th scope="col" class="col">Category (Count)</th>
           <th scope="col" class="col">
             Type <i class="fas fa-sort-up sort-symbols"></i>
@@ -20,11 +20,11 @@
 
       <tbody class="dates">
         <tr v-for="row in transacciones"  v-bind:key = "row">
-          <td>{{row.id}}</td>
           <td>{{row.categoria}}</td>
           <td>{{row.tipo}}</td>
           <td>{{row.cantidad}}</td>
           <td>{{row.fecha_registro}}</td>
+          <td><button v-on:click="deleteTransaccion(row.id)">Delete</button></td>
         </tr>
       </tbody>
     </table>
@@ -32,7 +32,6 @@
 </template>
 <script>
 import axios from "axios";
-
 export default {
   name: "Balance",
   data: function () {
@@ -40,10 +39,11 @@ export default {
       transacciones: [],
     };
   },
-
-  created: function () {
-    let self = this;
-    axios
+  
+  methods: {
+    getData(){
+      let self = this;
+      axios
       .get("https://maney-app-back.herokuapp.com/records")
       .then((httpResponse) => {       
         for (var registro of httpResponse.data){
@@ -53,8 +53,20 @@ export default {
       .catch((error) => {
         alert("ERROR Servidor");
       });
+    },
+    deleteTransaccion(id){
+      axios.delete("https://maney-app-back.herokuapp.com/record/"+id).then((res)=> {this.transacciones=this.transacciones.filter(transacciones=>transacciones.id!==id)
+        
+      })
+      .catch((error) => {
+        alert("ERROR Borrando");
+      });
+    }
   },
-};
+  mounted () {
+    this.getData()
+}
+}
 </script>
 <style>
 .resumen {
