@@ -44,7 +44,7 @@ export default {
     getData(){
       let self = this;
       axios
-      .get("http://127.0.0.1:8000/records")
+      .get("https://maney-app-back.herokuapp.com/records")
       .then((httpResponse) => {       
         for (var registro of httpResponse.data){
           self.transacciones.push(registro);
@@ -55,7 +55,7 @@ export default {
       });
     },
     deleteTransaccion(id){
-      axios.delete("http://127.0.0.1:8000/record/"+id).then((res)=> {this.transacciones=this.transacciones.filter(transacciones=>transacciones.id!==id)
+      axios.delete("https://maney-app-back.herokuapp.com/record/"+id).then((res)=> {this.transacciones=this.transacciones.filter(transacciones=>transacciones.id!==id)
         
       })
       .catch((error) => {
