@@ -35,7 +35,7 @@ export default {
     getData(){
       let self = this;
       axios
-      .get("http://127.0.0.1:8000/records")
+      .get("http://maney-app-back.herokuapp.com/records")
       .then((httpResponse) => { 
         for (var registro of httpResponse.data){
           if (registro.tipo == "Expense"){
@@ -49,18 +49,6 @@ export default {
         alert("ERROR Servidor");
       });
     },
-    deleteTransaccion(id){
-      axios
-        .delete("http://127.0.0.1:8000/record/"+id)
-        .then((res)=> {this.transacciones=this.transacciones
-        .filter(transacciones=>transacciones.id!==id)
-        alert("Record deleted \n                id: " + id);
-        
-      })
-      .catch((error) => {
-        alert("Record deleted \n" + id);
-      });
-    } 
 
   },
   mounted () {
