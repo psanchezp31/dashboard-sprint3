@@ -74,10 +74,11 @@ export default {
     processCreateRecord() {
       var self = this;
       axios
-        .post("https://maney-app-back.herokuapp.com/record", self.record_in, { headers: {} })
+        .post("http://127.0.0.1:8000/record", self.record_in, { headers: {} })
         .then((result) => {
           console.log(result.data)
           alert("Successful registration");
+          location.reload();
         });
     }
   },
