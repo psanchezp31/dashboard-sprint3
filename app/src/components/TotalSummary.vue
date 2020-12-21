@@ -1,18 +1,20 @@
 <template>
  <div id="app">
-  <div id="Balance">
+  <div class="container">
     <div class="resumen">
-      <h3><center>Total Summary</center></h3>
+      <div class="titulo-tabla"><center>Total Summary</center></div>
     </div>
-      <table class="tabla_balance">
-        <tr>
-          <th scope="row">Total Income</th>
-          <td><b>$ </b>{{total_income}}</td>
-        </tr>
-        <tr>
-          <th scope="row">Total Expense</th>
-          <td><b>$ </b>{{total_expense}}</td>
-        </tr>
+      <table class="table table-striped tabla-summary">
+        <tbody>
+          <tr>
+            <td scope="row"><strong>Total Income</strong></td>
+            <td>{{ new Intl.NumberFormat('es-CO', {style: "currency", currency: "COP"}).format(total_income).replace(',00', '') }}</td>
+          </tr>
+          <tr>
+            <td scope="row"><strong>Total Expense</strong></td>
+            <td>{{ new Intl.NumberFormat('es-CO', {style: "currency", currency: "COP"}).format(total_expense).replace(',00', '') }}</td>
+          </tr>
+        </tbody>
       </table>
     </div>
   </div>
@@ -35,7 +37,7 @@ export default {
     getData(){
       let self = this;
       axios
-      .get("https://maney-app-back.herokuapp.com/records")
+      .get("http://maney-app-back.herokuapp.com/records")
       .then((httpResponse) => { 
         for (var registro of httpResponse.data){
           if (registro.tipo == "Expense"){
@@ -56,59 +58,3 @@ export default {
 }
 }
 </script>
-<style>
-.resumen {
-  background: #3b83c2;
-  width: 60%;
-  margin-left: auto;
-  margin-right: auto;
-  margin-top: 10px;
-  margin-bottom: 10px;
-  height: 40px;
-  font: 17px ubuntu;
-}
-
-.resumen h3 {
-  color: #000000;
-  width: 100%;
-  height: 100%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-
-.tabla_balance {
-  border: 1px rgb(156, 156, 156) solid;
-  border-collapse: collapse;
-  margin-left: auto;
-  margin-right: auto;
-  width: 60%;
-  text-align: center;
-  font: 15px ubuntu;
-}
-
-.tabla_balance th,
-td {
-  border-bottom: 1px rgb(156, 156, 156) solid;
-  height: 50px;
-}
-
-.mt-3 {
-  width: 60%;
-  text-align: center;
-  margin-left: auto;
-  margin-right: auto;
-  margin-top: 35px;
-  border-collapse: collapse;
-  border-left: 1px rgb(156, 156, 156) solid;
-  font: 15px Medium 500 ubuntu;
-  border-collapse: collapse;
-}
-
-.tr-gray {
-  background: rgb(192, 192, 192);
-  font: 15px ubuntu;
-  height: 30px;
-}
-</style>
