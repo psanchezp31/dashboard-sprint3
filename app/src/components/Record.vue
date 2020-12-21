@@ -74,7 +74,7 @@ export default {
     processCreateRecord() {
       var self = this;
       axios
-        .post("https://maney-app-front.herokuapp.com/record", self.record_in, { headers: {} })
+        .post("https://maney-app-back.herokuapp.com/record", self.record_in, { headers: {} })
         .then((result) => {
           console.log(result.data)
           alert("Successful registration");

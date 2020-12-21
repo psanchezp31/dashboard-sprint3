@@ -35,7 +35,7 @@ export default {
     getData(){
       let self = this;
       axios
-      .get("https://maney-app-front.herokuapp.com/records")
+      .get("https://maney-app-back.herokuapp.com/records")
       .then((httpResponse) => { 
         for (var registro of httpResponse.data){
           if (registro.tipo == "Expense"){
