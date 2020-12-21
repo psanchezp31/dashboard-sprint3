@@ -1,9 +1,10 @@
 <template>
   <div id="Balance">
+   
     <div class="resumen">
       <h3><center>Balance</center></h3>
     </div>
-    <table class="mt-3">
+    <table class="table table-striped table-sm mt-3">
       <thead>
         <tr class="tr-gray">
           
@@ -15,6 +16,7 @@
             Total (COP) <i class="fas fa-sort sort-symbols"></i>
           </th>
           <th scope="col" class="col">Date</th>
+          <th scope="col" class="col">Action</th>
         </tr>
       </thead>
 
@@ -24,7 +26,7 @@
           <td>{{row.tipo}}</td>
           <td>{{row.cantidad}}</td>
           <td>{{row.fecha_registro}}</td>
-          <td><button v-on:click="deleteTransaccion(row.id)">Delete</button></td>
+          <td><i class="fas fa-trash-alt" v-on:click="deleteTransaccion(row.id)"></i></td>
         </tr>
       </tbody>
     </table>
@@ -44,24 +46,31 @@ export default {
     getData(){
       let self = this;
       axios
-      .get("https://maney-app-back.herokuapp.com/records")
+      .get("http://maney-app-back.herokuapp.com/records")
       .then((httpResponse) => {       
         for (var registro of httpResponse.data){
           self.transacciones.push(registro);
         }        
       })
       .catch((error) => {
-        alert("ERROR Servidor");
+        alert("Error in server");
       });
     },
     deleteTransaccion(id){
-      axios.delete("https://maney-app-back.herokuapp.com/record/"+id).then((res)=> {this.transacciones=this.transacciones.filter(transacciones=>transacciones.id!==id)
+      alert("Are you sure you want to delete this record?");
+      axios
+        .delete("http://maney-app-back.herokuapp.com/record/"+id)
+        .then((res)=> {this.transacciones=this.transacciones
+        .filter(transacciones=>transacciones.id!==id)
+        alert("Record deleted \n           Id: " + id);
+        location.reload();
         
       })
       .catch((error) => {
-        alert("ERROR Borrando");
+        alert("Error at deleting record \n            id: " + id);
       });
-    }
+    } 
+
   },
   mounted () {
     this.getData()
@@ -87,18 +96,6 @@ export default {
   display: flex;
   justify-content: center;
   align-items: center;
-}
-
-.mt-3 {
-  width: 60%;
-  text-align: center;
-  margin-left: auto;
-  margin-right: auto;
-  margin-top: 35px;
-  border-collapse: collapse;
-  border-left: 1px rgb(156, 156, 156) solid;
-  font: 15px Medium 500 ubuntu;
-  border-collapse: collapse;
 }
 
 .tr-gray {
